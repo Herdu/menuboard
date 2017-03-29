@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="style/style.css">
 
 </head>
+
+<?php
+
+    session_start();
+
+?>
+
+
+
 <body>
 
 <header>
@@ -13,18 +22,23 @@
 </header>
 
 <main>
-    <form action="board.html" method="POST">
+    <form action="php/login.php" method="POST">
         <h1>Menuboard</h1>
         <h2>panel zarządzania</h2>
 
         <label for="fname">Login</label>
-        <input type="text" id="fname" name="firstname" placeholder="login..." required />
+        <input type="text" name="login" placeholder="login..." required />
 
         <label for="lname">Hasło</label>
-        <input type="password" id="lname" name="lastname" placeholder="hasło..." required />
+        <input type="password"  name="password" placeholder="hasło..." required />
 
 
         <input type="submit" value="Zaloguj">
+
+        <?php
+            if (isset($_SESSION['wrong_login_data']))
+                echo '<span class="warning">Niepoprawne dane logowania! </span>';
+        ?>
 
     </form>
 

@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="style/board.css">
 
 </head>
+
+<?php
+    session_start();
+
+?>
+
 <body>
 
 <header>
@@ -16,7 +22,7 @@
 <main>
     <section class="horizontal-center">
         <div >
-            <span>Witaj, <span>[LOGIN-UZYTKOWNIKA]</span></span><a href="index.html"><button>wyloguj</button></a>
+            <span>Witaj, <span><?php echo $_SESSION['user']?></span></span><a href="php/logout.php"><button>wyloguj</button></a>
         </div>
     </section>
 
