@@ -38,10 +38,13 @@ header{
 header img{
     height: 50px;
     width: auto;
+    float: left;
+    margin-left: 100px;
 }
 
 
 footer{
+
     color: #56555a;
 }
 
@@ -51,20 +54,7 @@ footer{
 
 
 form{
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 4px;
-}
-
-form h1, form h2{
-    text-align: center;
-    color: #56555a;
-}
-form h2{
-    margin-bottom: 50px;
+    display: inline-block;
 }
 
 

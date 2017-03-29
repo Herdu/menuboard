@@ -1,7 +1,5 @@
-/**
- * Created by Mati on 2017-03-29.
- */
 
+/**
 var numberOfCategories = 3;
 
 
@@ -53,3 +51,4 @@ window.onload = function(){
     createCategories(numberOfCategories);
 
 }
+    */

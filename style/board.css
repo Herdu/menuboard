@@ -8,52 +8,66 @@ main{
 }
 
 
-section:first-child{
-    position: relative;
-    border-radius: 4px;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: 20px;
-}
-section:first-child>div>span{
-    display: inline-block;
-    margin-left: 20px;
-    color: #75797b;
-}
-section:first-child>div>span>span{
-    color: black;
-}
 
-section:first-child>div>a>button{
+
+header>div>a>button{
     margin-left: 20px;
     display: inline-block;
     width: 150px;
     background-color: #ff4350;
   }
 
-section:first-child>div>a>button:hover{
-    background-color: #aa2e3b;
-}
 
-.horizontal-center{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
 
+
+#categories{
+    display:                 flex;
+    display:                 -webkit-flex; /* Safari 8 */
+    flex-wrap: wrap;
+    -webkit-flex-wrap:       wrap;
+    justify-content:         center;
+    -webkit-justify-content: center;
+}
 
 .category{
-    width: 300px;
+    width: 340px;
     background-color: white;
     border-radius: 4px;
     min-height: 200px;
-    display: inline-block;
     margin: 5px;
     padding-top: 5px;
+    padding-left: 5px;
+    position: relative;
+    top: 0;
 }
+.item-name{
+    width: auto !important;
+}
+.item-price{
+    width: 75px !important;
+}
+.item-delete, .item-update{
+    font-size: 10px !important;
+    width: 20px;
+    padding: 2px !important;
+    text-align: center;
+}
+.item-delete{
+    background-color: red;
+}
+.item-update{
+    background-color: green;
+}
+
+button[type=submit]{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+table,tr,td{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .category span{
     font-size: 18px;
     color: #75797b;
@@ -71,7 +85,7 @@ table {
 
 th, td {
     text-align: left;
-    padding: 8px;
+
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
@@ -81,6 +95,14 @@ th {
     color: white;
 }
 
+input[type=text]{
+    font-size: 15px;
+    padding: 0;
+}
+input[type=submit],button{
+    font-size: 12px;
+    padding: 5px;
+}
 
 
 

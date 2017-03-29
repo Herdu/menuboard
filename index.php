@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Menuboard</title>
+    <link rel="stylesheet" href="style/index.css">
+
     <link rel="stylesheet" href="style/style.css">
 
 </head>

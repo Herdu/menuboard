@@ -29,6 +29,9 @@
             //login success
             $_SESSION['user'] = $login;
             $_SESSION['isLogged'] = true;
+
+            $_SESSION['numberOfCategories'] = $row['numberOfCategories'];
+
             if ($row['permissions'] == 'admin')
             {
                 $_SESSION['isAdmin'] = true;

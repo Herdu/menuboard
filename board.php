@@ -17,28 +17,26 @@
 
 <header>
     <a href="http://lokalmedia.pl/"><img src="img/logo.png"></a>
+
+    <div >
+        <span>Witaj, <span><?php echo $_SESSION['user']?></span></span><a href="php/logout.php"><button>wyloguj</button></a>
+    </div>
 </header>
 
 <main>
-    <section class="horizontal-center">
-        <div >
-            <span>Witaj, <span><?php echo $_SESSION['user']?></span></span><a href="php/logout.php"><button>wyloguj</button></a>
-        </div>
-    </section>
 
     <section id="categories">
-
+        <?php
+            require_once("php/getContent.php");
+        ?>
     </section>
 
 
 </main>
 
-<footer>
-    <p>Wszystkie prawa zastrzeżone. Copyright by Lokal Media 2017.</p>
-</footer>
 
 
-
+<script src="https://use.fontawesome.com/20166a2bda.js"></script>
 <script src="script/board.js"></script>
 </body>
 </html>
