@@ -22,7 +22,7 @@ else
     for ($i=0; $i< $numberOfCategories; $i++)
     {
         echo '<div class="category">';
-        echo '<span>Kategoria'. ($i + 1) .'</span>';
+        echo '<span>Kategoria '. ($i + 1) .'</span>';
         echo '<table>';
 
         $query = "SELECT * FROM products where owner= '{$_SESSION['user']}' and category=($i+1)";
