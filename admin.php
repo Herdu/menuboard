@@ -2,9 +2,9 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>panel zarządzania</title>
+    <title>panel administracyjny</title>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/board.css">
+    <link rel="stylesheet" href="style/admin.css">
 
 </head>
 
@@ -26,36 +26,37 @@
 <main>
 
 
-    <div class="form-container">
-        <form action="database/addUser.php" method="post" >
+    <div>
+        <form method="post" action="php/addAccount.php">
             <br />
             <h2>Dodaj użytkownika</h2>
             Login: <input  type="text" name="login" required />
             <br />Hasło: <input  type="text" name="password"  required />
             <br /><input type="hidden" name="role" value="0" />
+            <input type="hidden" value="user"  name="permissions" />
             <input type="submit" value="Dodaj"  name="submit" />
         </form>
     </div>
 
-    <div class="form-container">
-        <form action="database/addUser.php" method="post" class="alert">
+    <div>
+        <form method="post" action="php/addAccount.php">
             <br />
             <h2>Dodaj administratora</h2>
             Login: <input  type="text" name="login" required />
             <br />  Hasło: <input  type="text" name="password"  required />
             <br /><input type="hidden" name="role" value="2" />
+            <input type="hidden" value="admin"  name="permissions" />
             <input type="submit" value="Dodaj"  name="submit" />
         </form>
     </div>
 
 
-
     <br />
     <h2>Użytkownicy:</h2>
 
-    <table class="admin-table">
+    <table>
         <tr>
-            <td>Id</td> <td>Login</td> <td>Hasło</td><td>Uprawnienia</td><td></td><td></td>
+            <td>Id</td> <td>Login</td> <td>Hasło</td><td>Uprawnienia</td><td>Liczba kategorii</td><td>URL do StudioPro</td><td></td>
         </tr>
         <?php
 
@@ -83,43 +84,55 @@
                 if ($row['login'] == $_SESSION['user'])
                 {
                     echo "<tr class='special-row'>";
-                    echo "<td>". $row['id']. "</td><td class='alert'>". $row['login'] ."</td><td>". $row['password']."</td><td>". $row['permissions']."</td>";
 
                 }
 
                 else
                 {
                     echo "<tr>";
-                    echo "<td>". $row['id']. "</td><td>". $row['login'] ."</td><td>". $row['password']."</td><td>". $row['permissions']."</td>";
 
                 }
 
+                echo "<td>";
+                echo $row['id'];
+                echo "</td><td>";
+                echo $row['login'];
+                echo "</td><td>";
+
+
+                echo "<form method='post' action='php/updateUser.php' class='admin-form'>";
+                echo "<input type='text' name='password' value='{$row['password']}' >";
+                echo "</td><td>";
+                echo $row['permissions'];
+                echo "</td><td>";
+                echo "<input type='hidden' name='id' value='{$row['id']}' >";
+                echo "<input type='text' name='numberOfCategories' value='{$row['numberOfCategories']}' >";
+                 echo '<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"tabindex="-1" />';
+
+                echo "</form>";
+
+                echo "</td>";
+
 
                 echo "<td>";
-                if ($row['login'] != $_SESSION['user'])
-                {
-                    echo "<form method='post' action='database/deleteUser.php'>";
+                if ($row['permissions'] != 'admin')
+                    echo $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/menuboard/php/json.php?id={$row['id']}";
+                echo "</td>";
+
+                echo "<td>";
+
+                    echo "<form method='post' action='php/deleteUser.php'>";
                     echo "<input type='hidden' name='id' value='{$row['id']}' '>";
                     echo "<input type='submit' value='delete'>";
                     echo "</form>";
-                }
 
                 echo "</td>";
+                echo "<td></td><td></td>";
 
-                echo "<td>";
-
-                if ($row['login'] != $_SESSION['user'])
-                {
-                    echo "<form method='post' action='database/updateUser.php'>";
-                    echo "<input type='hidden' name='id' value='{$row['id']}' '>";
-                    echo "<input type='submit' value='update'>";
-                    echo "</form>";
-                }
-
-                echo "</td>";
 
 
                 echo "</tr>";
+
             }
 
         }
@@ -136,7 +149,5 @@
 
 
 
-<script src="https://use.fontawesome.com/20166a2bda.js"></script>
-<script src="script/board.js"></script>
 </body>
 </html>

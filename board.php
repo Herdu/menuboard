@@ -5,7 +5,6 @@
     <title>panel zarządzania</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/board.css">
-
 </head>
 
 <?php

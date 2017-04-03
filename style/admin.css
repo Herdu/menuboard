@@ -1,0 +1,62 @@
+.alert{
+    color: red;
+}
+
+.special-row{
+    background-color: yellow !important;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: auto;
+    margin-right:auto;
+
+
+}
+
+th, td {
+    text-align: left;
+
+}
+
+main{
+    text-align: center;
+}
+
+main div{
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: solid white 5px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type=text]{
+    font-size: 15px;
+    padding: 0;
+}
+input[type=submit],button{
+    font-size: 12px;
+    padding: 5px;
+}
+
+
+
+
+header>div>a>button{
+    margin-left: 20px;
+    display: inline-block;
+    width: 150px;
+    background-color: #ff4350;
+}
+
+input{
+    width: auto !important;
+}

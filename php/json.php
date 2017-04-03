@@ -1,18 +1,15 @@
 <?php
 
-    header('Content-type: application/xml');
-
 
 if ($_SERVER['REQUEST_METHOD'] == "GET"){
 
-    echo '<?xml version="1.0"?>';
-    echo '<menu>';
 
 
     require_once("db_data.php");
 
     $id =  $_GET['id'];
 
+    $menu = array();
 
     $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
@@ -31,10 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
             $login = $row['login'];
             $numberOfCategories = $row['numberOfCategories'];
 
+            $category = array();
+
 
             for ($i=0; $i<$numberOfCategories; $i++)
             {
-                echo '<category>';
+
 
 
                 $query = 'SELECT * FROM products where owner ="'.$login.'" and category ='.($i+1);
@@ -43,31 +42,31 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
 
                 while($row = $res->fetch_assoc())
                 {
-                    echo '<item>';
+                    $myAssoc = array(
+                        'name'=> $row['name'],
+                        'price'=> (number_format((float)$row['price'], 2, '.', ''))." zł"
+                        );
 
-                    echo '<name>';
-                    echo $row['name'];
-                    echo '</name>';
+                    $category[]= $myAssoc;
 
-                    echo '<price>';
-                    echo (number_format((float)$row['price'], 2, '.', ''))." zł";
-                    echo '</price>';
-                    echo '</item>';
                 }
 
-                echo '</category>';
-
+                $menu['category'.$i] =  $category;
             }
 
 
         }
+        $menu = array("menu"=>$menu);
 
+        $json = json_encode($menu ,JSON_PRETTY_PRINT );
 
         $mysqli->close();
     }
 
 
 
-    echo '</menu>';
+    echo $json;
 
 }
+?>
+
