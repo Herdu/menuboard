@@ -1,6 +1,4 @@
-
 <?php
-
 session_start();
 
 
@@ -26,6 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     else
     {
+
+        $mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+        // "SET NAMES `utf8` COLLATE `utf8_polish_ci`"
+
         $query = "INSERT INTO `users`( `login`, `password`, `permissions`) VALUES ('{$login}','{$password}','{$permissions}')";
 
         if (!($mysqli->query($query))){

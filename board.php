@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['isLogged']))
+{
+    header("location: board.php");
+    exit();
+
+}
+
+if (isset($_SESSION['isAdmin']))
+{
+    header("location: admin.php");
+    exit();
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,10 +28,6 @@
     <link rel="stylesheet" href="style/board.css">
 </head>
 
-<?php
-    session_start();
-
-?>
 
 <body>
 

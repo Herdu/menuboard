@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+if (isset($_SESSION['isAdmin']))
+{
+    header("location: admin.php");
+    exit();
+}
+
+
+
+if (isset($_SESSION['isLogged']))
+{
+    header("location: board.php");
+    exit();
+
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,11 +31,7 @@
 
 </head>
 
-<?php
 
-    session_start();
-
-?>
 
 
 

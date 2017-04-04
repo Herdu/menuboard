@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -8,10 +12,6 @@
 
 </head>
 
-<?php
-    session_start();
-
-?>
 
 <body>
 
@@ -72,7 +72,8 @@
 
         else
         {
-
+            $mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+            // "SET NAMES `utf8` COLLATE `utf8_polish_ci`"
 
             $query = "select * from users";
 

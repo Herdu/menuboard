@@ -1,6 +1,4 @@
-
 <?php
-
 session_start();
 
 
@@ -27,6 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     else
     {
+        $mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+        // "SET NAMES `utf8` COLLATE `utf8_polish_ci`"
+
+
         $query = "UPDATE products SET name='$name', price=$price WHERE id=$id;";
 
         $mysqli->query($query);

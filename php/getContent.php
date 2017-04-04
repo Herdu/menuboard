@@ -18,6 +18,9 @@ if($mysqli->connect_errno)
 else
 {
 
+     $mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+     // "SET NAMES `utf8` COLLATE `utf8_polish_ci`"
+
 
     for ($i=0; $i< $numberOfCategories; $i++)
     {

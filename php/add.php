@@ -1,6 +1,4 @@
-
 <?php
-
 session_start();
 
 
@@ -24,6 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     else
     {
+
+        $mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+        // "SET NAMES `utf8` COLLATE `utf8_polish_ci`"
+
+
+
         $query = "INSERT INTO `products`( `name`, `price`, `owner`, `category`) VALUES ('nazwa','0.00','{$_SESSION['user']}', $category)";
 
         $mysqli->query($query);

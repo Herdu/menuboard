@@ -20,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
 
     else
     {
+
+        $mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+        // "SET NAMES `utf8` COLLATE `utf8_polish_ci`"
+
         $query = "SELECT * FROM users where id=$id";
         $res = $mysqli->query($query);
 
@@ -28,12 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
             $login = $row['login'];
             $numberOfCategories = $row['numberOfCategories'];
 
-            $category = array();
+
+
+
 
 
             for ($i=0; $i<$numberOfCategories; $i++)
             {
-
+                $category = array();
 
 
                 $query = 'SELECT * FROM products where owner ="'.$login.'" and category ='.($i+1);
@@ -58,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
         }
         $menu = array("menu"=>$menu);
 
-        $json = json_encode($menu ,JSON_PRETTY_PRINT );
+        $json = json_encode($menu ,128 );
 
         $mysqli->close();
     }
